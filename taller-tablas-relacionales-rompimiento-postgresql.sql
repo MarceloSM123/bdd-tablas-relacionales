@@ -26,3 +26,26 @@ CREATE TABLE libro_autor(
     CONSTRAINT libro_autor_pk PRIMARY KEY(la_libro_codigo_fk, la_autor_id_fk)
 );
 
+-- PARTE 4 – INSERTAR DATOS
+
+INSERT INTO libros(codigo, titulo, pagina)
+VALUES
+('L001', 'Cien años de soledad', 500),
+('L002', 'El amor en los tiempos del cólera', 400),
+('L003', 'La sombra del viento', 600),
+('L004', 'El principito', 150);
+
+INSERT INTO autores(id, nombre, pais)
+VALUES
+(1, 'Gabriel García Márquez', 'Colombia'),
+(2, 'Carlos Ruiz Zafón', 'España'),
+(3, 'Antoine de Saint-Exupéry', 'Francia');
+
+INSERT INTO libro_autor(la_libro_codigo_fk, la_autor_id_fk, anio_publicacion)
+VALUES
+('L001', 1, 1967),  
+('L002', 1, 1985),   
+('L003', 2, 2001),   
+('L004', 3, 1943),   
+('L001', 2, 1967);  
+
