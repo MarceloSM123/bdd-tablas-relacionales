@@ -1,6 +1,11 @@
 -- PARTE 1 – CREAR BASE DE DATOS
 CREATE DATABASE biblioteca_db;
 
+-- eliminar tablas
+drop table libros;
+drop table autores;
+drop table libro_autor;
+
 -- PARTE 2 – CREAR TABLAS
 
 CREATE TABLE libros(
@@ -48,4 +53,48 @@ VALUES
 ('L003', 2, 2001),   
 ('L004', 3, 1943),   
 ('L001', 2, 1967);  
+
+-- PARTE 5 – CONSULTAS SQL
+-- CONSULTA 
+SELECT 
+    l.titulo, 
+    a.nombre AS autor, 
+    a.pais, 
+    la.anio_publicacion
+FROM libro_autor la
+INNER JOIN libros l ON la.la_libro_codigo_fk = l.codigo
+INNER JOIN autores a ON la.la_autor_id_fk = a.id
+ORDER BY l.titulo;
+
+-- CONSULTA 
+SELECT 
+    l.titulo, 
+    la.anio_publicacion
+FROM libro_autor la
+INNER JOIN libros l ON la.la_libro_codigo_fk = l.codigo
+WHERE la.anio_publicacion > 2020;
+
+-- CONSULTA 
+SELECT 
+    a.nombre, 
+    a.pais
+FROM autores a
+WHERE a.pais = 'Colombia';
+
+-- CONSULTA 4
+SELECT 
+    l.titulo, 
+    la.anio_publicacion
+FROM libro_autor la
+INNER JOIN libros l ON la.la_libro_codigo_fk = l.codigo
+ORDER BY la.anio_publicacion DESC;
+
+-- CONSULTA 5
+SELECT 
+    a.nombre AS autor, 
+    COUNT(la.la_libro_codigo_fk) AS total_libros
+FROM autores a
+LEFT JOIN libro_autor la ON a.id = la.la_autor_id_fk
+GROUP BY a.id, a.nombre
+ORDER BY total_libros DESC;
 
