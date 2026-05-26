@@ -98,3 +98,12 @@ LEFT JOIN libro_autor la ON a.id = la.la_autor_id_fk
 GROUP BY a.id, a.nombre
 ORDER BY total_libros DESC;
 
+-- PARTE 6 – MODIFICACIÓN DE LA TABLA
+ALTER TABLE libros ADD COLUMN precio DOUBLE PRECISION;
+
+UPDATE libros SET precio = 25.99 WHERE codigo = 'L001';
+UPDATE libros SET precio = 19.99 WHERE codigo = 'L002';
+UPDATE libros SET precio = 22.50 WHERE codigo = 'L003';
+UPDATE libros SET precio = 12.99 WHERE codigo = 'L004';
+
+SELECT titulo, precio FROM libros ORDER BY codigo;
