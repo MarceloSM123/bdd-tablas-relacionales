@@ -1,0 +1,2 @@
+-- PARTE 1 – CREAR BASE DE DATOS
+CREATE DATABASE biblioteca_db;
